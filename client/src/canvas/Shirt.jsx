@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { easing } from "maath";
 import { useFrame } from "@react-three/fiber";
@@ -14,7 +13,9 @@ const Shirt = () => {
     const logoTexture = useTexture(snap.logoDecal);
     const fullTexture = useTexture(snap.fullDecal);
 
-    useFrame((state, delta) => easing.dampC(materials.lambert1.color, snap.color, 0.25, delta));
+    useFrame((_, delta) =>
+        easing.dampC(materials.lambert1.color, snap.color, 0.25, delta)
+    );
 
     const stateString = JSON.stringify(snap);
 
@@ -29,6 +30,7 @@ const Shirt = () => {
             >
                 {snap.isFullTexture && (
                     <Decal
+                        key={snap.fullDecal}
                         position={[0, 0, 0]}
                         rotation={[0, 0, 0]}
                         scale={1}
@@ -38,11 +40,11 @@ const Shirt = () => {
 
                 {snap.isLogoTexture && (
                     <Decal
+                        key={snap.logoDecal}
                         position={[0, 0.04, 0.15]}
                         rotation={[0, 0, 0]}
                         scale={0.15}
                         map={logoTexture}
-                        // map-anisotropy={16}
                         depthTest={false}
                         depthWrite={true}
                     />

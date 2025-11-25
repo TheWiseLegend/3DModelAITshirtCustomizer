@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSnapshot } from "valtio";
 
-import confif from "../config/config";
+import config from "../config/config";
 import state from "../store";
 import { download, logoShirt, stylishShirt } from "../assets";
 import { downloadCanvasToImage, reader } from "../config/helpers";
@@ -40,12 +40,14 @@ const Customizer = () => {
                     />
                 );
             case "aipicker":
-                return <AIPicker
-                    prompt={prompt}
-                    setPrompt={setPrompt}
-                    generatingImg={generatingImg}
-                    handleSubmit={handleSubmit}
-                />;
+                return (
+                    <AIPicker
+                        prompt={prompt}
+                        setPrompt={setPrompt}
+                        generatingImg={generatingImg}
+                        handleSubmit={handleSubmit}
+                    />
+                );
 
             default:
                 return null;
@@ -53,22 +55,33 @@ const Customizer = () => {
     };
 
     const handleSubmit = async (type) => {
-        if(!prompt) return alert("Please provide a prompt");
+        if (!prompt) return alert("Please provide a prompt");
 
         try {
-            // Call our backend to generate an AI image from the prompt 
+            setGeneratingImg(true);
+
+            const response = await fetch(config.development.backendUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ prompt }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            handleDecals(type, `data:image/png;base64,${data.photo}`);
         } catch (error) {
-            alert(error);
+            alert("Failed to generate image: " + error.message);
         } finally {
             setGeneratingImg(false);
             setActiveEditorTab("");
         }
-
-    }
+    };
 
     const handleDecals = (type, result) => {
         const decalType = DecalTypes[type];
-
         state[decalType.stateProperty] = result;
 
         if (!activeFilterTab[decalType.filterTab]) {

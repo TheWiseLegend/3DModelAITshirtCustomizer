@@ -1,16 +1,9 @@
 import express from "express";
 import * as dotenv from "dotenv";
-import { Configuration, OpenAIApi } from "openai";
 
 dotenv.config();
 
 const router = express.Router();
-
-const config = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
-});
-
-const openai = new OpenAIApi(config);
 
 router.route("/").get((req, res) => {
     res.status(200).json({ message: "Hello from DALL-E! Routes" });
@@ -20,20 +13,42 @@ router.route("/").post(async (req, res) => {
     try {
         const { prompt } = req.body;
 
-        const response = await openai.createImage({
-            prompt,
-            n: 1,
-            size: "1024x1024",
-            response_format: "b64_json",
-        });
+        if (!prompt) {
+            return res.status(400).json({ message: "Prompt is required" });
+        }
 
-        const image = response.data.data[0].b64_json;
-        res.status(200).json({ photo: image });
+        // Primary: Pollinations.ai
+        let imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(
+            prompt
+        )}?width=512&height=512&nologo=true`;
+
+        let imageResponse;
+        try {
+            imageResponse = await fetch(imageUrl);
+            if (!imageResponse.ok) throw new Error("Pollinations failed");
+        } catch (err) {
+            // Fallback: Use a placeholder for testing
+            console.log("Pollinations.ai failed, using fallback...");
+            console.error("   Status:", imageResponse.status);
+            console.error("   Status Text:", imageResponse.statusText);
+            console.error("   URL:", imageUrl);
+
+            imageUrl = `https://picsum.photos/512/512`;
+            imageResponse = await fetch(imageUrl);
+        }
+
+        const arrayBuffer = await imageResponse.arrayBuffer();
+        const buffer = Buffer.from(arrayBuffer);
+        const base64Image = buffer.toString("base64");
+
+        res.status(200).json({ photo: base64Image });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Something went wrong" });
+        console.error("Error generating image:", error);
+        res.status(500).json({
+            message: "Something went wrong",
+            error: error.message,
+        });
     }
-    
 });
 
 export default router;
