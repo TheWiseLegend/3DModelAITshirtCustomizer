@@ -1,0 +1,23 @@
+# Dependencies - will be installed fresh in container
+node_modules
+
+# Environment file - will be passed via docker-compose
+.env
+
+# Git files
+.git
+.gitignore
+
+# Debug logs
+npm-debug.log
+
+# IDE/Editor files
+.vscode
+.idea
+
+# OS files
+.DS_Store
+
+# Docker files
+Dockerfile
+.dockerignore

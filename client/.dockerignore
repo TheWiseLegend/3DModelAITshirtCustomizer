@@ -1,0 +1,25 @@
+# Dependencies - will be installed fresh in container
+node_modules
+
+# Build output - not needed for dev
+dist
+build
+
+# Git files - not needed in container
+.git
+.gitignore
+
+# Debug logs
+npm-debug.log
+yarn-error.log
+
+# IDE/Editor files
+.vscode
+.idea
+
+# OS files
+.DS_Store
+
+# Docker files - prevent recursive copying
+Dockerfile
+.dockerignore
