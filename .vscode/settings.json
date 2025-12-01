@@ -25,5 +25,8 @@
   "prettier.semi": true,
   "prettier.singleQuote": false,
   "prettier.tabWidth": 2,
-  "prettier.trailingComma": "es5"
+  "prettier.trailingComma": "es5",
+  "[groovy]": {
+    "editor.defaultFormatter": "NicolasVuillamy.vscode-groovy-lint"
+  }
 }

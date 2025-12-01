@@ -49,7 +49,7 @@ pipeline {
                     sh '''
                         lftp -e "
                             set sftp:auto-confirm yes;
-                            open -u $SFTP_USER,$SFTP_PASS -p 65002 sftp://amribrahim.tech;
+                            open -u u218069050,25717204Ak_ -p 65002 sftp://amribrahim.tech;
                             mirror -R --verbose client/dist public_html/tshirtcustomizer;
                             bye
                         "
@@ -60,8 +60,3 @@ pipeline {
         }
     }
 }
-
-
-
-
-
