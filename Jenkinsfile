@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        SFTP_PORT = '65002',
-        SFTP_HOST 'amribrahim.tech',
-        HOSTINGER_BASE_PATH = '/home/u218069050/domains/amribrahim.tech',
+        SFTP_PORT = '65002'
+        SFTP_HOST 'amribrahim.tech'
+        HOSTINGER_BASE_PATH = '/home/u218069050/domains/amribrahim.tech'
         DEPLOY_PATH = "${HOSTINGER_BASE_PATH}/public/tshirtcustomizer"
     }
 
