@@ -8,4 +8,8 @@ const config = {
   },
 };
 
-export default config;
+// Auto-detect environment: use production in build, development in dev server
+const environment =
+  import.meta.env.MODE === "production" ? "production" : "development";
+
+export default config[environment];
