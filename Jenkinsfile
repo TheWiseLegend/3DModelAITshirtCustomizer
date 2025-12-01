@@ -56,7 +56,7 @@ pipeline {
                     sh '''
                         lftp -e "
                             set sftp:auto-confirm yes;
-                            open -u $SFTP_USER,$SFTP_PASS -p ${SFTP_PORT} sftp://${SFTP_HOST};
+                            open -u ${SFTP_USER},${SFTP_PASS} -p ${SFTP_PORT} sftp://${SFTP_HOST};
                             mirror -R --verbose client/dist ${DEPLOY_PATH};
                             bye
                         "
