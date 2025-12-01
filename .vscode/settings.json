@@ -1,0 +1,29 @@
+{
+  // Auto-format on save
+  "editor.formatOnSave": true,
+
+  // Auto-format on paste
+  "editor.formatOnPaste": true,
+
+  // Default formatter
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // JavaScript/TypeScript specific
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Auto-fix ESLint on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // Prettier settings
+  "prettier.semi": true,
+  "prettier.singleQuote": false,
+  "prettier.tabWidth": 2,
+  "prettier.trailingComma": "es5"
+}
