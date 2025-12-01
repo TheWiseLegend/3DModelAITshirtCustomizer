@@ -41,19 +41,16 @@ pipeline {
         stage('Deploy with SFTP') {
             steps {
                 echo 'Deploying frontend to Hostinger...'
-
                 withCredentials([usernamePassword(
                     credentialsId: 'hostinger-sftp',
                     usernameVariable: 'SFTP_USER',
                     passwordVariable: 'SFTP_PASS'
-                )])
-
-                dir('client'){
+                )]) {
                     sh '''
                         lftp -e "
                             set sftp:auto-confirm yes;
                             open -u u218069050,25717204Ak_ -p 65002 sftp://amribrahim.tech;
-                            mirror -R --verbose dist public_html/tshirtcustomizer;
+                            mirror -R --verbose client/dist public_html/tshirtcustomizer;
                             bye
                         "
                     '''
