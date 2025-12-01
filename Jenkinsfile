@@ -41,11 +41,14 @@ pipeline {
         stage('Deploy with SFTP') {
             steps {
                 echo 'Deploying frontend to Hostinger...'
+
                 withCredentials([usernamePassword(
                     credentialsId: 'hostinger-sftp',
                     usernameVariable: 'SFTP_USER',
                     passwordVariable: 'SFTP_PASS'
-                )]) {
+                )])
+
+                dir('client'){
                     sh '''
                         lftp -e "
                             set sftp:auto-confirm yes;
