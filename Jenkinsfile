@@ -5,7 +5,7 @@ pipeline {
         SFTP_PORT = '65002'
         SFTP_HOST = 'amribrahim.tech'
         HOSTINGER_BASE_PATH = '/home/u218069050/domains/amribrahim.tech'
-        DEPLOY_PATH = "${HOSTINGER_BASE_PATH}/public/tshirtcustomizer"
+        DEPLOY_PATH = "${HOSTINGER_BASE_PATH}/public_html/tshirtcustomizer"
     }
 
     stages {
