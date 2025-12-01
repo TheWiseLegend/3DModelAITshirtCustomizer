@@ -14,7 +14,7 @@ pipeline {
                 echo 'Testing the backend'
                 dir("server") {
                     sh 'npm install'
-                    sh 'run test'
+                    sh 'npm test'
                 }
             }
         }
