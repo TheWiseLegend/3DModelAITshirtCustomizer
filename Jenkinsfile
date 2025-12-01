@@ -50,7 +50,7 @@ pipeline {
                         lftp -e "
                             set sftp:auto-confirm yes;
                             open -u u218069050,25717204Ak_ -p 65002 sftp://amribrahim.tech;
-                            mirror -R --verbose client/dist public_html/tshirtcustomizer;
+                            mirror -R --verbose client/dist /home/u218069050/domains/amribrahim.tech/public_html/tshirtcustomizer;
                             bye
                         "
                     '''
