@@ -21,7 +21,7 @@ pipeline {
                 echo 'Testing the backend'
                 dir('server') {
                     sh 'npm install'
-                    // sh 'npm test'
+                    sh 'npm test'
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
                 echo 'Testing the frontend'
                 dir('client') {
                     sh 'npm install'
-                    // sh 'npm test'
+                    sh 'npm test'
                 }
             }
         }
