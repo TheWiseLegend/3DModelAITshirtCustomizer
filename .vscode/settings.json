@@ -56,6 +56,13 @@
     "editor.defaultFormatter": "NicolasVuillamy.vscode-groovy-lint",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true
-  }
+  },
+
+  // GroovyLint extension settings (required for format to work!)
+  "groovyLint.enable": true,
+  "groovyLint.format.enable": true,
+  "groovyLint.lint.trigger": "onSave",
+  "groovyLint.fix.enable": true,
+  "groovyLint.fix.trigger": "onSave"
 }
 
