@@ -1,13 +1,6 @@
 pipeline {
     agent any
 
-    // environment {
-    //     SFTP_PORT = '65002'
-    //     SFTP_HOST = 'amribrahim.tech'
-    //     HOSTINGER_BASE_PATH = '/home/u218069050/domains/amribrahim.tech'
-    //     DEPLOY_PATH = "${HOSTINGER_BASE_PATH}/public_html/tshirtcustomizer"
-    // }
-
     stages {
         stage('Checkout code') {
             steps {
@@ -61,8 +54,8 @@ pipeline {
                     sh """
                         lftp -e "
                             set sftp:auto-confirm yes;
-                            open -u \$SFTP_USER,\$SFTP_PASS -p $SFTP_PORT sftp://$SFTP_HOST;
-                            mirror -R --verbose client/dist $BASE_PATH/public_html/tshirtcustomizer;
+                            open -u \$SFTP_USER,\$SFTP_PASS -p \$SFTP_PORT sftp://\$SFTP_HOST;
+                            mirror -R --verbose client/dist \$BASE_PATH/public_html/tshirtcustomizer;
                             bye
                         "
                     """
