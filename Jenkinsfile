@@ -1,12 +1,12 @@
 pipeline {
     agent any
 
-    environment {
-        SFTP_PORT = '65002'
-        SFTP_HOST = 'amribrahim.tech'
-        HOSTINGER_BASE_PATH = '/home/u218069050/domains/amribrahim.tech'
-        DEPLOY_PATH = "${HOSTINGER_BASE_PATH}/public_html/tshirtcustomizer"
-    }
+    // environment {
+    //     SFTP_PORT = '65002'
+    //     SFTP_HOST = 'amribrahim.tech'
+    //     HOSTINGER_BASE_PATH = '/home/u218069050/domains/amribrahim.tech'
+    //     DEPLOY_PATH = "${HOSTINGER_BASE_PATH}/public_html/tshirtcustomizer"
+    // }
 
     stages {
         stage('Checkout code') {
@@ -48,16 +48,21 @@ pipeline {
         stage('Deploy with SFTP') {
             steps {
                 echo 'Deploying frontend to Hostinger...'
-                withCredentials([usernamePassword(
-                    credentialsId: 'hostinger-sftp',
-                    usernameVariable: 'SFTP_USER',
-                    passwordVariable: 'SFTP_PASS'
-                )]) {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'hostinger-sftp',
+                        usernameVariable: 'SFTP_USER',
+                        passwordVariable: 'SFTP_PASS'),
+                    string(credentialsId: 'SFTP_PORT', variable: 'SFTP_PORT'),
+                    string(credentialsId: 'SFTP_HOST', variable: 'SFTP_HOST'),
+                    string(credentialsId: 'HOSTINGER_BASE_PATH', variable: 'BASE_PATH')
+                ])
+                {
                     sh """
                         lftp -e "
                             set sftp:auto-confirm yes;
-                            open -u \$SFTP_USER,\$SFTP_PASS -p ${SFTP_PORT} sftp://${SFTP_HOST};
-                            mirror -R --verbose client/dist ${DEPLOY_PATH};
+                            open -u \$SFTP_USER,\$SFTP_PASS -p $SFTP_PORT sftp://$SFTP_HOST;
+                            mirror -R --verbose client/dist $BASE_PATH;
                             bye
                         "
                     """

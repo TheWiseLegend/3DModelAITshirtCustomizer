@@ -1,4 +1,10 @@
 {
+  // File associations - tell VS Code that Jenkinsfile is Groovy
+  "files.associations": {
+    "Jenkinsfile": "groovy",
+    "Jenkinsfile.*": "groovy"
+  },
+
   // Auto-format on save
   "editor.formatOnSave": true,
 
@@ -15,18 +21,41 @@
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
   // Auto-fix ESLint on save
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
 
-  // Prettier settings
-  "prettier.semi": true,
-  "prettier.singleQuote": false,
-  "prettier.tabWidth": 2,
-  "prettier.trailingComma": "es5",
+  // ESLint validation
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // Prettier settings - will use .prettierrc.json config
+  "prettier.requireConfig": true,
+
   "[groovy]": {
-    "editor.defaultFormatter": "NicolasVuillamy.vscode-groovy-lint"
+    "editor.defaultFormatter": "NicolasVuillamy.vscode-groovy-lint",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+  "[jenkinsfile]": {
+    "editor.defaultFormatter": "NicolasVuillamy.vscode-groovy-lint",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
   }
 }
+

@@ -1,0 +1,33 @@
+{
+  "extends": "recommended",
+  "rules": {
+    "Indentation": {
+      "spacesPerIndentLevel": 4,
+      "enabled": true
+    },
+    "LineLength": {
+      "length": 120,
+      "enabled": true
+    },
+    "BracesForClass": "off",
+    "BracesForMethod": "off",
+    "BracesForIfElse": "off",
+    "BracesForForLoop": "off",
+    "BracesForTryCatchFinally": "off",
+    "SpaceAfterOpeningBrace": "off",
+    "SpaceBeforeClosingBrace": "off",
+    "ConsecutiveBlankLines": {
+      "enabled": true
+    },
+    "TrailingWhitespace": {
+      "enabled": true
+    },
+    "FileEndsWithoutNewline": "off",
+    "CompileStatic": "off",
+    "NoDef": "off",
+    "VariableTypeRequired": "off",
+    "MethodReturnTypeRequired": "off",
+    "DuplicateStringLiteral": "off",
+    "DuplicateNumberLiteral": "off"
+  }
+}

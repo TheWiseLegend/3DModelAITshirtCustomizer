@@ -1,40 +1,40 @@
 /* eslint-disable no-unused-vars */
-import { color } from "framer-motion";
-import { swatch, fileIcon, ai, logoShirt, stylishShirt } from "../assets";
+import { color } from 'framer-motion';
+import { swatch, fileIcon, ai, logoShirt, stylishShirt } from '../assets';
 
 export const EditorTabs = [
   {
-    name: "colorpicker",
+    name: 'colorpicker',
     icon: swatch,
   },
   {
-    name: "filepicker",
+    name: 'filepicker',
     icon: fileIcon,
   },
   {
-    name: "aipicker",
+    name: 'aipicker',
     icon: ai,
   },
 ];
 
 export const FilterTabs = [
   {
-    name: "logoShirt",
+    name: 'logoShirt',
     icon: logoShirt,
   },
   {
-    name: "stylishShirt",
+    name: 'stylishShirt',
     icon: stylishShirt,
   },
 ];
 
 export const DecalTypes = {
   logo: {
-    stateProperty: "logoDecal",
-    filterTab: "logoShirt",
+    stateProperty: 'logoDecal',
+    filterTab: 'logoShirt',
   },
   full: {
-    stateProperty: "fullDecal",
-    filterTab: "stylishShirt",
+    stateProperty: 'fullDecal',
+    filterTab: 'stylishShirt',
   },
 };
