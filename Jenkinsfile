@@ -62,7 +62,7 @@ pipeline {
                         lftp -e "
                             set sftp:auto-confirm yes;
                             open -u \$SFTP_USER,\$SFTP_PASS -p $SFTP_PORT sftp://$SFTP_HOST;
-                            mirror -R --verbose client/dist $BASE_PATH;
+                            mirror -R --verbose client/dist $BASE_PATH/public_html/tshirtcustomizer;
                             bye
                         "
                     """
