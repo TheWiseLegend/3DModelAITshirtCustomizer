@@ -1,6 +1,7 @@
-# Jenkinsfile Formatting Guide
 
-## 🎯 Problem & Solution
+Jenkinsfile Formatting Guide
+
+Problem & Solution
 
 **Problem**: Jenkinsfile doesn't auto-format on save in VS Code
 
