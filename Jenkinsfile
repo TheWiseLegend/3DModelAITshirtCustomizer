@@ -10,6 +10,12 @@ pipeline {
         }
 
         stage('Test the Backend') {
+            agent {
+                docker {
+                    image 'node:22-alpine'
+                    reuseNode true
+                }
+            }
             steps {
                 echo 'Testing the backend'
                 dir('server') {
@@ -20,6 +26,12 @@ pipeline {
         }
 
         stage('Test the frontend') {
+            agent {
+                docker {
+                    image 'node:22-alpine'
+                    reuseNode true
+                }
+            }
             steps {
                 echo 'Testing the frontend'
                 dir('client') {
@@ -30,6 +42,12 @@ pipeline {
         }
 
         stage('Build the frontend') {
+            agent {
+                docker {
+                    image: 'node:22-alpine'
+                    reuseNode: true
+                }
+            }
             steps {
                 echo 'Building the frontend into a dist folder'
                 dir('client') {
