@@ -17,41 +17,28 @@ router.route('/').post(async (req, res) => {
       return res.status(400).json({ message: 'Prompt is required' });
     }
 
-    console.log('Received prompt:', prompt);
-
     // Primary: Pollinations.ai
     let imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(
       prompt
     )}?width=512&height=512&nologo=true`;
 
-    console.log('Fetching from URL:', imageUrl);
-
     let imageResponse;
     try {
-      imageResponse = await fetch(imageUrl, {
-        timeout: 30000, // 30 second timeout
-      });
-      console.log('Pollinations response status:', imageResponse.status);
+      imageResponse = await fetch(imageUrl);
 
       if (!imageResponse.ok) {
         throw new Error(`Pollinations failed with status: ${imageResponse.status}`);
       }
     } catch (error) {
       // Fallback: Use a placeholder for testing
-      console.error('Pollinations.ai failed:', error.message);
-      console.log('Using fallback image...');
+      console.log('Pollinations.ai failed, using fallback image');
       imageUrl = `https://picsum.photos/512/512`;
       imageResponse = await fetch(imageUrl);
     }
 
-    console.log('Converting to buffer...');
     const arrayBuffer = await imageResponse.arrayBuffer();
-    console.log('ArrayBuffer size:', arrayBuffer.byteLength);
-
     const buffer = Buffer.from(arrayBuffer);
     const base64Image = buffer.toString('base64');
-
-    console.log('Base64 length:', base64Image.length);
 
     if (!base64Image || base64Image.length === 0) {
       throw new Error('Failed to generate base64 image');
