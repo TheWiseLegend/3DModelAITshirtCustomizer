@@ -59,22 +59,38 @@ const Customizer = () => {
           ? config.production.backendUrl
           : config.development.backendUrl;
 
+      console.log('Environment:', import.meta.env.MODE);
+      console.log('Backend URL:', backendUrl);
+      console.log('Prompt:', prompt);
+
       const response = await fetch(backendUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt }),
       });
 
+      console.log('Response status:', response.status);
+
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
+      console.log('Response data:', data);
+      console.log('Photo exists?', !!data.photo);
+      console.log('Photo length:', data.photo?.length);
+
+      if (!data.photo) {
+        throw new Error('Backend returned empty photo data');
+      }
 
       // Backend returns base64, so add the data URI prefix
       const imageDataUri = `data:image/jpeg;base64,${data.photo}`;
       handleDecals(type, imageDataUri);
     } catch (error) {
+      console.error('Full error:', error);
       alert('Failed to generate image: ' + error.message);
     } finally {
       setGeneratingImg(false);
