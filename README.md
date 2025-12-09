@@ -63,7 +63,6 @@ npm run test:coverage # Coverage report
 
 ## 📚 Documentation
 
-- [Project Organization Guide](./docs/PROJECT_ORGANIZATION.md) - **Why configs are in root (Read this!)**
 - [Prettier & ESLint Setup](./docs/PRETTIER_ESLINT_SETUP.md) - Code formatting configuration
 - [Jenkinsfile Formatting](./docs/JENKINSFILE_FORMATTING.md) - **How to format Jenkinsfile**
 - [Formatting Documentation](./docs/FormatingDoc.md) - Additional formatting info
