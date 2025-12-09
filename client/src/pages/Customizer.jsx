@@ -47,14 +47,19 @@ const Customizer = () => {
         return null;
     }
   };
-
   const handleSubmit = async (type) => {
     if (!prompt) return alert('Please provide a prompt');
 
     try {
       setGeneratingImg(true);
 
-      const response = await fetch(config.backendUrl, {
+      // Automatically detect environment
+      const backendUrl =
+        import.meta.env.MODE === 'production'
+          ? config.production.backendUrl
+          : config.development.backendUrl;
+
+      const response = await fetch(backendUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt }),
@@ -65,7 +70,10 @@ const Customizer = () => {
       }
 
       const data = await response.json();
-      handleDecals(type, `data:image/png;base64,${data.photo}`);
+
+      // Backend returns base64, so add the data URI prefix
+      const imageDataUri = `data:image/jpeg;base64,${data.photo}`;
+      handleDecals(type, imageDataUri);
     } catch (error) {
       alert('Failed to generate image: ' + error.message);
     } finally {
