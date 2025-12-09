@@ -60,8 +60,6 @@ pipeline {
         }
 
         stage('Deploy with SFTP') {
-            agent any
-
             steps {
                 echo 'Deploying frontend to Hostinger...'
                 withCredentials([
