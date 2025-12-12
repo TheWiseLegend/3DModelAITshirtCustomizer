@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSnapshot } from 'valtio';
 
