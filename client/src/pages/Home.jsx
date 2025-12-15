@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars -- motion is used for JSX components
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSnapshot } from 'valtio';
 
