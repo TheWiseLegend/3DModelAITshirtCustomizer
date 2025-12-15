@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars -- motion is used for JSX components
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSnapshot } from 'valtio';
 
@@ -27,7 +26,7 @@ const Home = () => {
           <motion.div className="home-content" {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
               <h1 className="head-text">
-                LET'S <br className="xl:block hidden" /> DO IT
+                LET'S <br className="xl:block hidden" /> DO IT CI/CD WAY
               </h1>
             </motion.div>
 
