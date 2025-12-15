@@ -29,7 +29,7 @@ router.route('/').post(async (req, res) => {
       if (!imageResponse.ok) {
         throw new Error(`Pollinations failed with status: ${imageResponse.status}`);
       }
-    } catch (_error) {
+    } catch {
       console.log('Pollinations.ai failed, using fallback image');
       imageUrl = `https://picsum.photos/512/512`;
       imageResponse = await fetch(imageUrl);
