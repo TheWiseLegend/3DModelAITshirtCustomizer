@@ -1,3 +1,8 @@
+[![Coverage](http://localhost:9000/api/project_badges/measure?project=tshirt-customizer&metric=coverage&token=sqb_db439063bd270b3d5e604162d3b20dd8b77a4888)](http://localhost:9000/dashboard?id=tshirt-customizer)
+
+[![Security Rating](http://localhost:9000/api/project_badges/measure?project=tshirt-customizer&metric=software_quality_security_rating&token=sqb_db439063bd270b3d5e604162d3b20dd8b77a4888)](http://localhost:9000/dashboard?id=tshirt-customizer)
+
+
 # 3D Model AI T-Shirt Customizer
 
 A 3D interactive t-shirt customization application with AI-powered design generation.
