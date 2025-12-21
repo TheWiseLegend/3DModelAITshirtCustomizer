@@ -1,5 +1,7 @@
+http://localhost:9000/api/project_badges/measure?project=tshirt-customizer&metric=coverage&token=sqb_db439063bd270b3d5e604162d3b20dd8b77a4888
 [![Coverage](http://localhost:9000/api/project_badges/measure?project=tshirt-customizer&metric=coverage&token=sqb_db439063bd270b3d5e604162d3b20dd8b77a4888)](http://localhost:9000/dashboard?id=tshirt-customizer)
 
+http://localhost:9000/api/project_badges/measure?project=tshirt-customizer&metric=software_quality_security_rating&token=sqb_db439063bd270b3d5e604162d3b20dd8b77a4888
 [![Security Rating](http://localhost:9000/api/project_badges/measure?project=tshirt-customizer&metric=software_quality_security_rating&token=sqb_db439063bd270b3d5e604162d3b20dd8b77a4888)](http://localhost:9000/dashboard?id=tshirt-customizer)
 
 
