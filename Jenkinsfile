@@ -22,6 +22,7 @@ pipeline {
                 dir('server') {
                     sh 'npm install'
                     sh 'npm test'
+                    sh 'npm run test:coverage'
                 }
             }
         }
@@ -39,6 +40,22 @@ pipeline {
                 dir('client') {
                     sh 'npm install'
                     sh 'npm test'
+                    sh 'nom run test:coverage'
+                }
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    // SonarQube scanner will use sonar-project.properties file
+                    def scannerHome = tool 'SonarQubeScanner'
+
+                    withSonarQubeEnv('LocalSonarQube') {
+                        sh """
+                            ${scannerHome}/bin/sonar-scanner
+                        """
+                    }
                 }
             }
         }

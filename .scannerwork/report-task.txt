@@ -1,0 +1,6 @@
+projectKey=tshirt-customizer
+serverUrl=http://localhost:9000
+serverVersion=25.12.0.117093
+dashboardUrl=http://localhost:9000/dashboard?id=tshirt-customizer
+ceTaskId=849bb57f-463f-47ed-a07c-fad65329bdc5
+ceTaskUrl=http://localhost:9000/api/ce/task?id=849bb57f-463f-47ed-a07c-fad65329bdc5
