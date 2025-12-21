@@ -48,12 +48,11 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    // SonarQube scanner will use sonar-project.properties file
-                    def scannerHome = tool 'SonarQubeScanner'
-
-                    withSonarQubeEnv('LocalSonarQube') {
+                    withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
                         sh """
-                            ${scannerHome}/bin/sonar-scanner
+                            ${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.host.url=http://host.docker.internal:9000 \
+                            -Dsonar.token=\$SONAR_TOKEN
                         """
                     }
                 }
