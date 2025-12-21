@@ -40,7 +40,7 @@ pipeline {
                 dir('client') {
                     sh 'npm install'
                     sh 'npm test'
-                    sh 'nom run test:coverage'
+                    sh 'npm run test:coverage'
                 }
             }
         }
